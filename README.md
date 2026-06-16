@@ -1,3 +1,10 @@
+# venedykt_mitishov
+
+[![Deploy](https://github.com/ChewBaccaYeti/venedykt_mitishov/actions/workflows/deploy.yaml/badge.svg)](https://github.com/ChewBaccaYeti/venedykt_mitishov/actions/workflows/deploy.yaml)
+[![Last commit](https://img.shields.io/github/last-commit/ChewBaccaYeti/venedykt_mitishov)](https://github.com/ChewBaccaYeti/venedykt_mitishov/commits/main)
+[![Top language](https://img.shields.io/github/languages/top/ChewBaccaYeti/venedykt_mitishov)](https://github.com/ChewBaccaYeti/venedykt_mitishov)
+[![Open issues](https://img.shields.io/github/issues/ChewBaccaYeti/venedykt_mitishov)](https://github.com/ChewBaccaYeti/venedykt_mitishov/issues)
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started

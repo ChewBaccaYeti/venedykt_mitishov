@@ -1,12 +1,12 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { savery } from "../fonts/fonts";
+import { savery } from "../../fonts/fonts";
 
 const DEFAULT_OPTIONS = {
   size: () => window.innerWidth * 0.014,
   family: savery.style.fontFamily,
-  fps: 24,
+  fps: 30,
   hue: 120,
   glyphs:
     "ラドクリフマラソンわたしワタシんょンョたばこタバコとうきょうトウキョウ0123456789±!@#$%^&*()_+ABCDEFGHIJKLMNOPQRSTUVWXYZ对于更庞大的数据集",
@@ -126,7 +126,7 @@ class DigitalRain {
       alpha = lower;
     }
 
-    return `hsl(${hue || this.options.hue}, 100%, ${row === y ? 100 : 70}%, ${alpha})`;
+    return `hsl(${hue || this.options.hue}, 100%, ${row === y ? 60 : 35}%, ${alpha})`;
   }
 
   private render() {

@@ -1,0 +1,12 @@
+{
+    "name": {
+        "first_name": "Venedykt",
+        "middle_name": "Arturovich",
+        "last_name": "Mitishov"
+    },
+    "education": {
+        "faculty": "Information Technologies and Computer Science",
+        "specialisation": "Software Engineer",
+        "university": "https://www.unibit.bg/en/about-unibit/overview/alma-mater"
+    }
+}

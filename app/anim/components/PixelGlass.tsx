@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import GlassSurface, { type GlassSurfaceProps } from "./GlassSurface";
+import GlassSurface, { type GlassSurfaceProps } from "../../../components/GlassSurface";
 import { usePixelCanvas, type PixelCanvasOptions } from "@/hooks/usePixelCanvas";
 
 export interface PixelGlassProps extends GlassSurfaceProps {

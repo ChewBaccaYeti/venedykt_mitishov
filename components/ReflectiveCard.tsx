@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { Fingerprint, Activity, Lock } from "lucide-react";
+import user from "@/app/data/user.json"
 
 interface ReflectiveCardProps {
   blurStrength?: number;
@@ -16,21 +17,25 @@ interface ReflectiveCardProps {
   glassDistortion?: number;
   className?: string;
   style?: React.CSSProperties;
+  name?: string;
+  education?: string;
 }
 
 const ReflectiveCard: React.FC<ReflectiveCardProps> = ({
   blurStrength = 12,
   color = "white",
   metalness = 1,
-  roughness = 0.4,
+  roughness = 0.85,
   overlayColor = "rgba(255, 255, 255, 0.1)",
   displacementStrength = 20,
-  noiseScale = 1,
-  specularConstant = 1.2,
+  noiseScale = 1.6,
+  specularConstant = 0.7,
   grayscale = 1,
   glassDistortion = 0,
   className = "",
   style = {},
+  name = `${user.name.first_name} ${user.name.last_name}`,
+  education = user.education.specialisation,
 }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [, setStreamActive] = useState(false);
@@ -42,8 +47,8 @@ const ReflectiveCard: React.FC<ReflectiveCardProps> = ({
       try {
         stream = await navigator.mediaDevices.getUserMedia({
           video: {
-            width: { ideal: 640 },
-            height: { ideal: 480 },
+            width: { ideal: 1280 },
+            height: { ideal: 720 },
             facingMode: "user",
           },
         });
@@ -109,7 +114,7 @@ const ReflectiveCard: React.FC<ReflectiveCardProps> = ({
               lightingColor="#ffffff"
               result="light"
             >
-              <fePointLight x="0" y="0" z="300" />
+            <fePointLight x="0" y="0" z="300" />
             </feSpecularLighting>
             <feComposite in="light" in2="rippled" operator="in" result="light-effect" />
             <feBlend in="light-effect" in2="rippled" mode="screen" result="metallic-result" />
@@ -122,7 +127,7 @@ const ReflectiveCard: React.FC<ReflectiveCardProps> = ({
             <feMorphology in="solidAlpha" operator="erode" radius="45" result="erodedAlpha" />
             <feGaussianBlur in="erodedAlpha" stdDeviation="10" result="blurredMap" />
             <feComponentTransfer in="blurredMap" result="glassMap">
-              <feFuncA type="linear" slope="0.5" intercept="0" />
+            <feFuncA type="linear" slope="0.5" intercept="0" />
             </feComponentTransfer>
             <feDisplacementMap
               in="metallic-result"
@@ -148,15 +153,15 @@ const ReflectiveCard: React.FC<ReflectiveCardProps> = ({
         }}
       />
 
-      <div className="pointer-events-none absolute inset-0 z-10 bg-[url('data:image/svg+xml,%3Csvg%20viewBox%3D%270%200%20200%20200%27%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%3E%3Cfilter%20id%3D%27noiseFilter%27%3E%3CfeTurbulence%20type%3D%27fractalNoise%27%20baseFrequency%3D%270.8%27%20numOctaves%3D%273%27%20stitchTiles%3D%27stitch%27%2F%3E%3C%2Ffilter%3E%3Crect%20width%3D%27100%25%27%20height%3D%27100%25%27%20filter%3D%27url(%23noiseFilter)%27%2F%3E%3C%2Fsvg%3E')] opacity-[var(--roughness,0.4)] mix-blend-overlay" />
+      <div className="pointer-events-none absolute inset-0 z-10 bg-[url('data:image/svg+xml,%3Csvg%20viewBox%3D%270%200%20200%20200%27%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%3E%3Cfilter%20id%3D%27noiseFilter%27%3E%3CfeTurbulence%20type%3D%27fractalNoise%27%20baseFrequency%3D%270.8%27%20numOctaves%3D%273%27%20stitchTiles%3D%27stitch%27%2F%3E%3C%2Ffilter%3E%3Crect%20width%3D%27100%25%27%20height%3D%27100%25%27%20filter%3D%27url(%23noiseFilter)%27%2F%3E%3C%2Fsvg%3E')] opacity-(--roughness,0.4) mix-blend-overlay" />
 
-      <div className="pointer-events-none absolute inset-0 z-20 bg-[linear-gradient(135deg,rgba(255,255,255,0.4)_0%,rgba(255,255,255,0.1)_40%,rgba(255,255,255,0)_50%,rgba(255,255,255,0.1)_60%,rgba(255,255,255,0.3)_100%)] opacity-[var(--metalness,1)] mix-blend-overlay" />
+      <div className="pointer-events-none absolute inset-0 z-20 bg-[linear-gradient(135deg,rgba(255,255,255,0.4)_0%,rgba(255,255,255,0.1)_40%,rgba(255,255,255,0)_50%,rgba(255,255,255,0.1)_60%,rgba(255,255,255,0.3)_100%)] opacity-(--metalness,1) mix-blend-overlay" />
 
-      <div className="pointer-events-none absolute inset-0 z-20 rounded-[20px] bg-[linear-gradient(135deg,rgba(255,255,255,0.8)_0%,rgba(255,255,255,0.2)_50%,rgba(255,255,255,0.6)_100%)] [mask-composite:exclude] p-[1px] [mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)]" />
+      <div className="pointer-events-none absolute inset-0 z-20 rounded-[20px] bg-[linear-gradient(135deg,rgba(255,255,255,0.8)_0%,rgba(255,255,255,0.2)_50%,rgba(255,255,255,0.6)_100%)] mask-exclude p-px [mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)]" />
 
-      <div className="relative z-10 flex h-full flex-col justify-between bg-(--overlay-color,rgba(255,255,255,0.05)) p-8 text-[var(--text-color,white)]">
+      <div className="relative z-10 flex h-full flex-col justify-between bg-(--overlay-color,rgba(255,255,255,0.05)) p-8 text-(--text-color,white)">
         <div className="flex items-center justify-between border-b border-white/20 pb-4">
-          <div className="flex items-center gap-1.5 rounded border border-white/20 bg-white/10 px-2 py-1 text-[10px] font-bold tracking-[0.1em]">
+          <div className="flex items-center gap-1.5 rounded border border-white/20 bg-white/10 px-2 py-1 text-[10px] font-bold tracking-widest">
             <Lock size={14} className="opacity-80" />
             <span>SECURE ACCESS</span>
           </div>
@@ -166,9 +171,9 @@ const ReflectiveCard: React.FC<ReflectiveCardProps> = ({
         <div className="mb-8 flex flex-1 flex-col items-center justify-end gap-6 text-center">
           <div className="text-center">
             <h2 className="m-0 mb-2 text-2xl font-bold tracking-[0.05em] drop-shadow-md">
-              ALEXANDER DOE
+              {name}
             </h2>
-            <p className="m-0 text-xs tracking-[0.2em] uppercase opacity-70">SENIOR DEVELOPER</p>
+            <p className="m-0 text-xs tracking-[0.2em] uppercase opacity-70">{education}</p>
           </div>
         </div>
 

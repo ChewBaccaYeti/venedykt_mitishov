@@ -28,30 +28,30 @@ export interface GlassSurfaceProps extends React.HTMLAttributes<HTMLDivElement> 
   xChannel?: "R" | "G" | "B";
   yChannel?: "R" | "G" | "B";
   mixBlendMode?:
-    | "normal"
-    | "multiply"
-    | "screen"
-    | "overlay"
-    | "darken"
-    | "lighten"
-    | "color-dodge"
-    | "color-burn"
-    | "hard-light"
-    | "soft-light"
-    | "difference"
-    | "exclusion"
-    | "hue"
-    | "saturation"
-    | "color"
-    | "luminosity"
-    | "plus-darker"
-    | "plus-lighter";
+  | "normal"
+  | "multiply"
+  | "screen"
+  | "overlay"
+  | "darken"
+  | "lighten"
+  | "color-dodge"
+  | "color-burn"
+  | "hard-light"
+  | "soft-light"
+  | "difference"
+  | "exclusion"
+  | "hue"
+  | "saturation"
+  | "color"
+  | "luminosity"
+  | "plus-darker"
+  | "plus-lighter";
   /** Layer rendered between the glass background and the content, clipped to the rounded container. */
   overlay?: React.ReactNode;
 }
 
 const subscribeDarkMode = (onChange: () => void) => {
-  if (typeof window === "undefined") return () => {};
+  if (typeof window === "undefined") return () => { };
   const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
   mediaQuery.addEventListener("change", onChange);
   return () => mediaQuery.removeEventListener("change", onChange);
@@ -89,7 +89,7 @@ const supportsSVGFilters = () => {
 // subscription is a no-op; the snapshot is read once per environment.
 const useSvgFilterSupport = () =>
   useSyncExternalStore(
-    () => () => {},
+    () => () => { },
     supportsSVGFilters,
     () => false,
   );

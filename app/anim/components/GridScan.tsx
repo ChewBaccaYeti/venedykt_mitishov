@@ -418,15 +418,15 @@ export const GridScan: React.FC<GridScanProps> = ({
       const orientationEvent =
         typeof window !== "undefined"
           ? (
-              window as unknown as {
-                DeviceOrientationEvent?: { requestPermission?: () => Promise<PermissionState> };
-              }
-            ).DeviceOrientationEvent
+            window as unknown as {
+              DeviceOrientationEvent?: { requestPermission?: () => Promise<PermissionState> };
+            }
+          ).DeviceOrientationEvent
           : undefined;
       if (enableGyro && orientationEvent?.requestPermission) {
         try {
           await orientationEvent.requestPermission();
-        } catch {}
+        } catch { }
       }
     };
     const onEnter = () => {
@@ -855,7 +855,7 @@ export const GridScan: React.FC<GridScanProps> = ({
       style={style}
     >
       {showPreview && (
-        <div className="pointer-events-none absolute right-3 bottom-3 h-[132px] w-[220px] overflow-hidden rounded-lg border border-white/25 bg-black font-sans text-[12px] leading-[1.2] text-white shadow-[0_4px_16px_rgba(0,0,0,0.4)]">
+        <div className="pointer-events-none absolute right-3 bottom-3 h-33 w-55 overflow-hidden rounded-lg border border-white/25 bg-black font-sans text-[12px] leading-[1.2] text-white shadow-[0_4px_16px_rgba(0,0,0,0.4)]">
           <video
             ref={videoRef}
             muted
@@ -863,7 +863,7 @@ export const GridScan: React.FC<GridScanProps> = ({
             autoPlay
             className="h-full w-full -scale-x-100 object-cover"
           />
-          <div className="absolute top-2 left-2 rounded-[6px] bg-black/50 px-[6px] py-[2px] backdrop-blur-[4px]">
+          <div className="absolute top-2 left-2 rounded-[6px] bg-black/50 px-1.5 py-0.5 backdrop-blur-xs">
             {enableWebcam
               ? modelsReady
                 ? uiFaceActive
