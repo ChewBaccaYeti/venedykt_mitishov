@@ -33,9 +33,7 @@ export default function PixelGlass({
       {...glass}
       {...(disablePixels ? {} : pixelProps)}
       overlay={
-        disablePixels ? undefined : (
-          <canvas ref={canvasRef} className="block h-full w-full" />
-        )
+        disablePixels ? undefined : <canvas ref={canvasRef} className="block h-full w-full" />
       }
     >
       {children}

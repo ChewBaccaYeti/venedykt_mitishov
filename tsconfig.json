@@ -28,7 +28,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
-    "**/*.mts"
-,     "app/anim/assets/Morph.jsx"  ],
+    "**/*.mts",
+    "app/anim/assets/Morph.jsx"
+  ],
   "exclude": ["node_modules"]
 }

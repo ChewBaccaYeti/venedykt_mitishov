@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { Fingerprint, Activity, Lock } from "lucide-react";
-import user from "@/app/data/user.json"
+import user from "@/app/data/user.json";
 
 interface ReflectiveCardProps {
   blurStrength?: number;
@@ -114,7 +114,7 @@ const ReflectiveCard: React.FC<ReflectiveCardProps> = ({
               lightingColor="#ffffff"
               result="light"
             >
-            <fePointLight x="0" y="0" z="300" />
+              <fePointLight x="0" y="0" z="300" />
             </feSpecularLighting>
             <feComposite in="light" in2="rippled" operator="in" result="light-effect" />
             <feBlend in="light-effect" in2="rippled" mode="screen" result="metallic-result" />
@@ -127,7 +127,7 @@ const ReflectiveCard: React.FC<ReflectiveCardProps> = ({
             <feMorphology in="solidAlpha" operator="erode" radius="45" result="erodedAlpha" />
             <feGaussianBlur in="erodedAlpha" stdDeviation="10" result="blurredMap" />
             <feComponentTransfer in="blurredMap" result="glassMap">
-            <feFuncA type="linear" slope="0.5" intercept="0" />
+              <feFuncA type="linear" slope="0.5" intercept="0" />
             </feComponentTransfer>
             <feDisplacementMap
               in="metallic-result"
@@ -170,20 +170,18 @@ const ReflectiveCard: React.FC<ReflectiveCardProps> = ({
 
         <div className="mb-8 flex flex-1 flex-col items-center justify-end gap-6 text-center">
           <div className="text-center">
-            <h2 className="m-0 mb-2 text-2xl font-bold tracking-[0.05em] drop-shadow-md">
-              {name}
-            </h2>
+            <h2 className="m-0 mb-2 text-2xl font-bold tracking-[0.05em] drop-shadow-md">{name}</h2>
             <p className="m-0 text-xs tracking-[0.2em] uppercase opacity-70">{education}</p>
           </div>
         </div>
 
         <div className="flex items-end justify-between border-t border-white/20 pt-6">
           <div className="flex flex-col gap-1">
-            <span className="text-[9px] tracking-widest opacity-60">ID NUMBER</span>
-            <span className="font-mono text-sm tracking-[0.05em]">8901-2345-6789</span>
+            <h3 className="tracking-widest opacity-60">PHONE NUMBER</h3>
+            <span className="font-mono text-sm tracking-[0.05em]">+359-8992-86042</span>
           </div>
           <div className="opacity-40">
-            <Fingerprint size={32} />
+            <Fingerprint size={40} />
           </div>
         </div>
       </div>

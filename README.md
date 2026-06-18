@@ -5,6 +5,8 @@
 [![Top language](https://img.shields.io/github/languages/top/ChewBaccaYeti/venedykt_mitishov)](https://github.com/ChewBaccaYeti/venedykt_mitishov)
 [![Open issues](https://img.shields.io/github/issues/ChewBaccaYeti/venedykt_mitishov)](https://github.com/ChewBaccaYeti/venedykt_mitishov/issues)
 
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=ChewBaccaYeti&layout=compact&hide=html,css&count_private=true)](https://github.com/ChewBaccaYeti)
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started

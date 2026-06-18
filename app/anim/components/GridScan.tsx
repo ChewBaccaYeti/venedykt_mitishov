@@ -418,15 +418,15 @@ export const GridScan: React.FC<GridScanProps> = ({
       const orientationEvent =
         typeof window !== "undefined"
           ? (
-            window as unknown as {
-              DeviceOrientationEvent?: { requestPermission?: () => Promise<PermissionState> };
-            }
-          ).DeviceOrientationEvent
+              window as unknown as {
+                DeviceOrientationEvent?: { requestPermission?: () => Promise<PermissionState> };
+              }
+            ).DeviceOrientationEvent
           : undefined;
       if (enableGyro && orientationEvent?.requestPermission) {
         try {
           await orientationEvent.requestPermission();
-        } catch { }
+        } catch {}
       }
     };
     const onEnter = () => {
