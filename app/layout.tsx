@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 // import MatrixRain from "./anim/binary_logis/MatrixRain";
 
 import "./globals.css";
-import GridBg from "@/components/gridBg";
+import ZedGrid from "@/components/ZedGrid";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,7 +29,7 @@ export default function RootLayout({
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
       <body className="relative flex min-h-full flex-col">
         {/* <MatrixRain /> */}
-        <GridBg />
+        <ZedGrid />
         {children}
       </body>
     </html>

@@ -246,12 +246,12 @@ export default function Home() {
         mixBlendMode="screen"
         opacity={0.93}
         pixel={{ variant: "green" }}
-        width={"100%"}
-        height={"100%"}
-        className="flex flex-1 flex-col items-center justify-between p-21 sm:items-start"
+        width={"auto"}
+        height={"auto"}
+        className="flex flex-col items-center justify-center p-2"
       >
         {/* <Morph /> */}
-        <div id="main-board" className="m-8 h-auto w-full p-8">
+        <div id="main-board" className="h-auto w-[calc(100vw-4rem)] max-w-3xl p-8">
           <div className="flex flex-row gap-4">
             <GlareHover
               width="320px"
