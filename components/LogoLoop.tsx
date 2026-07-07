@@ -4,21 +4,21 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from "react"
 
 export type LogoItem =
   | {
-      node: React.ReactNode;
-      href?: string;
-      title?: string;
-      ariaLabel?: string;
-    }
+    node: React.ReactNode;
+    href?: string;
+    title?: string;
+    ariaLabel?: string;
+  }
   | {
-      src: string;
-      alt?: string;
-      href?: string;
-      title?: string;
-      srcSet?: string;
-      sizes?: string;
-      width?: number;
-      height?: number;
-    };
+    src: string;
+    alt?: string;
+    href?: string;
+    title?: string;
+    srcSet?: string;
+    sizes?: string;
+    width?: number;
+    height?: number;
+  };
 
 export interface LogoLoopProps {
   logos: LogoItem[];
@@ -347,7 +347,7 @@ export const LogoLoop = React.memo<LogoLoopProps>(
               "inline-flex items-center",
               "motion-reduce:transition-none",
               scaleOnHover &&
-                "transition-transform duration-300 ease-in-out group-hover/item:scale-120",
+              "transition-transform duration-300 ease-in-out group-hover/item:scale-120",
             )}
             aria-hidden={!!(item as any).href && !(item as any).ariaLabel}
           >
@@ -361,7 +361,7 @@ export const LogoLoop = React.memo<LogoLoopProps>(
               "[image-rendering:-webkit-optimize-contrast]",
               "motion-reduce:transition-none",
               scaleOnHover &&
-                "transition-transform duration-300 ease-in-out group-hover/item:scale-120",
+              "transition-transform duration-300 ease-in-out group-hover/item:scale-120",
             )}
             src={(item as any).src}
             srcSet={(item as any).srcSet}
@@ -446,70 +446,75 @@ export const LogoLoop = React.memo<LogoLoopProps>(
     );
 
     return (
-      <div
-        ref={containerRef}
-        className={rootClasses}
-        style={containerStyle}
-        role="region"
-        aria-label={ariaLabel}
-      >
-        {fadeOut && (
-          <>
-            {isVertical ? (
+      <>
+        <h3 className="flex justify-start mt-1 mb-2 py-1">Technologies</h3>
+        <div className="flex items-center rounded-xl border-2 border-[#a5a5a8] py-2">
+          <div
+            ref={containerRef}
+            className={rootClasses}
+            style={containerStyle}
+            role="region"
+            aria-label={ariaLabel}
+          >
+            {fadeOut && (
               <>
-                <div
-                  aria-hidden
-                  className={cx(
-                    "pointer-events-none absolute inset-x-0 top-0 z-10",
-                    "h-[clamp(24px,8%,120px)]",
-                    "bg-[linear-gradient(to_bottom,var(--logoloop-fadeColor,var(--logoloop-fadeColorAuto))_0%,rgba(0,0,0,0)_100%)]",
-                  )}
-                />
-                <div
-                  aria-hidden
-                  className={cx(
-                    "pointer-events-none absolute inset-x-0 bottom-0 z-10",
-                    "h-[clamp(24px,8%,120px)]",
-                    "bg-[linear-gradient(to_top,var(--logoloop-fadeColor,var(--logoloop-fadeColorAuto))_0%,rgba(0,0,0,0)_100%)]",
-                  )}
-                />
-              </>
-            ) : (
-              <>
-                <div
-                  aria-hidden
-                  className={cx(
-                    "pointer-events-none absolute inset-y-0 left-0 z-10",
-                    "w-[clamp(24px,8%,120px)]",
-                    "bg-[linear-gradient(to_right,var(--logoloop-fadeColor,var(--logoloop-fadeColorAuto))_0%,rgba(0,0,0,0)_100%)]",
-                  )}
-                />
-                <div
-                  aria-hidden
-                  className={cx(
-                    "pointer-events-none absolute inset-y-0 right-0 z-10",
-                    "w-[clamp(24px,8%,120px)]",
-                    "bg-[linear-gradient(to_left,var(--logoloop-fadeColor,var(--logoloop-fadeColorAuto))_0%,rgba(0,0,0,0)_100%)]",
-                  )}
-                />
+                {isVertical ? (
+                  <>
+                    <div
+                      aria-hidden
+                      className={cx(
+                        "pointer-events-none absolute inset-x-0 top-0 z-10",
+                        "h-[clamp(24px,8%,120px)]",
+                        "bg-[linear-gradient(to_bottom,var(--logoloop-fadeColor,var(--logoloop-fadeColorAuto))_0%,rgba(0,0,0,0)_100%)]",
+                      )}
+                    />
+                    <div
+                      aria-hidden
+                      className={cx(
+                        "pointer-events-none absolute inset-x-0 bottom-0 z-10",
+                        "h-[clamp(24px,8%,120px)]",
+                        "bg-[linear-gradient(to_top,var(--logoloop-fadeColor,var(--logoloop-fadeColorAuto))_0%,rgba(0,0,0,0)_100%)]",
+                      )}
+                    />
+                  </>
+                ) : (
+                  <>
+                    <div
+                      aria-hidden
+                      className={cx(
+                        "pointer-events-none absolute inset-y-0 left-0 z-10",
+                        "w-[clamp(24px,8%,120px)]",
+                        "bg-[linear-gradient(to_right,var(--logoloop-fadeColor,var(--logoloop-fadeColorAuto))_0%,rgba(0,0,0,0)_100%)]",
+                      )}
+                    />
+                    <div
+                      aria-hidden
+                      className={cx(
+                        "pointer-events-none absolute inset-y-0 right-0 z-10",
+                        "w-[clamp(24px,8%,120px)]",
+                        "bg-[linear-gradient(to_left,var(--logoloop-fadeColor,var(--logoloop-fadeColorAuto))_0%,rgba(0,0,0,0)_100%)]",
+                      )}
+                    />
+                  </>
+                )}
               </>
             )}
-          </>
-        )}
 
-        <div
-          className={cx(
-            "relative z-0 flex will-change-transform select-none",
-            "motion-reduce:transform-none",
-            isVertical ? "h-max w-full flex-col" : "w-max flex-row",
-          )}
-          ref={trackRef}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
-          {logoLists}
+            <div
+              className={cx(
+                "relative z-0 flex will-change-transform select-none",
+                "motion-reduce:transform-none",
+                isVertical ? "h-max w-full flex-col" : "w-max flex-row",
+              )}
+              ref={trackRef}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
+              {logoLists}
+            </div>
+          </div>
         </div>
-      </div>
+      </>
     );
   },
 );

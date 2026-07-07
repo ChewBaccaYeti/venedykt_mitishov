@@ -1,8 +1,11 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
+// { useEffect, useRef, useState }
+import Image from "next/image";
 import { Fingerprint, Activity, Lock } from "lucide-react";
 import user from "@/app/data/user.json";
+import VenBg from "@/app/data/Ven_bg.png";
 
 interface ReflectiveCardProps {
   blurStrength?: number;
@@ -37,39 +40,39 @@ const ReflectiveCard: React.FC<ReflectiveCardProps> = ({
   name = `${user.name.first_name} ${user.name.last_name}`,
   education = user.education.specialisation,
 }) => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [, setStreamActive] = useState(false);
+  // const videoRef = useRef<HTMLVideoElement>(null);
+  // const [, setStreamActive] = useState(false);
 
-  useEffect(() => {
-    let stream: MediaStream | null = null;
+  // useEffect(() => {
+  //   let stream: MediaStream | null = null;
 
-    const startWebcam = async () => {
-      try {
-        stream = await navigator.mediaDevices.getUserMedia({
-          video: {
-            width: { ideal: 1280 },
-            height: { ideal: 720 },
-            facingMode: "user",
-          },
-        });
+  //   const startWebcam = async () => {
+  //     try {
+  //       stream = await navigator.mediaDevices.getUserMedia({
+  //         video: {
+  //           width: { ideal: 1280 },
+  //           height: { ideal: 720 },
+  //           facingMode: "user",
+  //         },
+  //       });
 
-        if (videoRef.current) {
-          videoRef.current.srcObject = stream;
-          setStreamActive(true);
-        }
-      } catch (err) {
-        console.error("Error accessing webcam:", err);
-      }
-    };
+  //       if (videoRef.current) {
+  //         videoRef.current.srcObject = stream;
+  //         setStreamActive(true);
+  //       }
+  //     } catch (err) {
+  //       console.error("Error accessing webcam:", err);
+  //     }
+  //   };
 
-    startWebcam();
+  //   startWebcam();
 
-    return () => {
-      if (stream) {
-        stream.getTracks().forEach((track) => track.stop());
-      }
-    };
-  }, []);
+  //   return () => {
+  //     if (stream) {
+  //       stream.getTracks().forEach((track) => track.stop());
+  //     }
+  //   };
+  // }, []);
 
   const baseFrequency = 0.03 / Math.max(0.1, noiseScale);
   const saturation = 1 - Math.max(0, Math.min(1, grayscale));
@@ -141,7 +144,7 @@ const ReflectiveCard: React.FC<ReflectiveCardProps> = ({
         </defs>
       </svg>
 
-      <video
+      {/* <video
         ref={videoRef}
         autoPlay
         playsInline
@@ -151,6 +154,15 @@ const ReflectiveCard: React.FC<ReflectiveCardProps> = ({
           filter:
             "saturate(var(--saturation, 0)) contrast(120%) brightness(110%) blur(var(--blur-strength, 12px)) url(#metallic-displacement)",
         }}
+      /> */}
+
+      <Image
+        src={VenBg}
+        alt={name}
+        fill
+        priority
+        sizes="320px"
+        className="absolute top-0 left-0 z-0 h-full w-full scale-[0.8] -translate-y-22 object-[center_top] object-cover"
       />
 
       <div className="pointer-events-none absolute inset-0 z-10 bg-[url('data:image/svg+xml,%3Csvg%20viewBox%3D%270%200%20200%20200%27%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%3E%3Cfilter%20id%3D%27noiseFilter%27%3E%3CfeTurbulence%20type%3D%27fractalNoise%27%20baseFrequency%3D%270.8%27%20numOctaves%3D%273%27%20stitchTiles%3D%27stitch%27%2F%3E%3C%2Ffilter%3E%3Crect%20width%3D%27100%25%27%20height%3D%27100%25%27%20filter%3D%27url(%23noiseFilter)%27%2F%3E%3C%2Fsvg%3E')] opacity-(--roughness,0.4) mix-blend-overlay" />

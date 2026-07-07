@@ -35,6 +35,7 @@ import {
   SiMermaid,
   SiInsomnia,
   SiJest,
+  SiPostman,
 } from "react-icons/si";
 import PixelGlass from "@/app/anim/components/PixelGlass";
 // import Morph from "@/app/anim/assets/Morph"
@@ -146,11 +147,11 @@ const techLogos = [
     title: "Mongoose",
     href: "https://mongoosejs.com",
   },
-  {
-    node: <SiPrisma aria-label="Prisma" color="#FFFFFF66" />,
-    title: "Prisma",
-    href: "https://www.prisma.io",
-  },
+  // {
+  //   node: <SiPrisma aria-label="Prisma" color="#FFFFFF66" />,
+  //   title: "Prisma",
+  //   href: "https://www.prisma.io",
+  // },
   {
     node: <SiRedis aria-label="Redis" color="#FFFFFF66" />,
     title: "Redis",
@@ -164,9 +165,9 @@ const techLogos = [
     href: "https://swagger.io",
   },
   {
-    node: <SiInsomnia aria-label="Insomnia" color="#FFFFFF66" />,
-    title: "Insomnia",
-    href: "https://insomnia.rest",
+    node: <SiPostman aria-label="Postman" color="#FFFFFF66" />,
+    title: "Postman",
+    href: "https://www.postman.com/",
   },
 
   // Server, OS & hosting
@@ -175,11 +176,11 @@ const techLogos = [
     title: "Nginx",
     href: "https://nginx.org",
   },
-  {
-    node: <SiNetlify aria-label="Netlify" color="#FFFFFF66" />,
-    title: "Netlify",
-    href: "https://www.netlify.com",
-  },
+  // {
+  //   node: <SiNetlify aria-label="Netlify" color="#FFFFFF66" />,
+  //   title: "Netlify",
+  //   href: "https://www.netlify.com",
+  // },
   {
     node: <SiVercel aria-label="Vercel" color="#FFFFFF66" />,
     title: "Vercel",
@@ -233,18 +234,18 @@ export default function Home() {
   return (
     <main className="flex flex-1 flex-col items-center justify-center font-sans">
       <PixelGlass
-        blueOffset={18}
-        borderRadius={0}
-        borderWidth={1}
-        brightness={48}
+        blueOffset={0}
+        redOffset={0}
+        greenOffset={0}
+        borderRadius={16}
+        borderWidth={0.06}
+        brightness={50}
         disablePixels={true}
-        displace={4.6}
-        distortionScale={-100}
-        greenOffset={46}
+        displace={1}
+        distortionScale={10}
         mixBlendMode="screen"
-        opacity={0.46}
+        opacity={0.93}
         pixel={{ variant: "green" }}
-        redOffset={32}
         width={"100%"}
         height={"100%"}
         className="flex flex-1 flex-col items-center justify-between p-21 sm:items-start"
@@ -275,13 +276,10 @@ export default function Home() {
               />
             </GlareHover>
             <Suspense fallback={<TopLanguagesSkeleton />}>
-              <TopLanguages />
+              <TopLanguages className="self-end" />
             </Suspense>
           </div>
-          <h3 className="mt-2 flex justify-start py-2">Technologies</h3>
-          <div className="mt-2 flex items-center rounded-xl border-2 border-[#a5a5a8] p-2">
-            <LogoLoop logos={techLogos} />
-          </div>
+          <LogoLoop logos={techLogos} />
         </div>
       </PixelGlass>
     </main>
